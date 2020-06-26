@@ -24,6 +24,7 @@
 
     <!-- Main CSS-->
     <link href="../static/css/main.css" rel="stylesheet" media="all" th:href="@{css/main.css}">
+
 </head>
 
 <body>
@@ -33,15 +34,21 @@
             <div class="card-heading"></div>
             <div class="card-body">
                 <h3 class="title">Реквизиты входящего документа</h3>
-                <form method="POST">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username and password.
+                    </div>
+                </div>
+                <form   action="/requisites" method="POST">
                     <div class="row row-space">
                         <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder="Рег. №" name="name">
+                            <input class="input--style-2" type="text" placeholder="Рег. №" name="reg_Id">
                         </div>
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2 js-datepicker" type="text" placeholder="Дата рег." name="birthday">
-                                <i class="zmdi zmdi-calendar-note input-icon "></i>
+<!--                                <input class="input&#45;&#45;style-2 js-datepicker" type="text" placeholder="Дата рег." name="reg_date">-->
+<!--                                <i class="zmdi zmdi-calendar-note input-icon "></i>-->
+                                <p class="input--style-2" th:text="${regdate}"></p>
                             </div>
                         </div>
                     </div>
@@ -49,11 +56,11 @@
 
                     <div class="row row-space">
                         <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder="№ исх. док-та" name="name">
+                            <input class="input--style-2" type="text" placeholder="№ исх. док-та" name="source_doc_id">
                         </div>
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2 js-datepicker" type="text" placeholder="Дата исх. док-та" name="birthday">
+                                <input class="input--style-2 js-datepicker" type="text" placeholder="Дата исх. док-та" name="source_doc_date">
                                 <i class="zmdi zmdi-calendar-note input-icon "></i>
                             </div>
                         </div>
@@ -65,7 +72,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="gender">
+                                    <select name="delivery_form">
                                         <option disabled="disabled" selected="selected">Форма доставки</option>
                                         <option>Курьер</option>
                                         <option>Email</option>
@@ -78,7 +85,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="gender">
+                                    <select name="correspondent">
                                         <option disabled="disabled" selected="selected">Корреспондент</option>
                                         <option>ЦБ</option>
                                         <option>ГНИ</option>
@@ -92,11 +99,11 @@
 
 
                     <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Тема" name="name">
+                        <input class="input--style-2" type="text" placeholder="Тема" name="topic">
                     </div>
                     <div class="input-group">
                         <p><b>Описание:</b></p>
-                        <p><textarea rows="10" cols="60" name="text"></textarea></p>
+                        <p><textarea rows="10" cols="60" name="description"></textarea></p>
                     </div>
 
 
@@ -104,18 +111,18 @@
 
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2 js-datepicker" type="text" placeholder="Срок исполнения" name="birthday">
+                                <input class="input--style-2 js-datepicker" type="text" placeholder="Срок исполнения" name="period_of_execution">
                                 <i class="zmdi zmdi-calendar-note input-icon "></i>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                            <label for="vehicle3"> Доступ</label><br><br>
+                            <input type="checkbox" id="access" name="access" value="True">
+                            <label for="access"> Доступ</label><br><br>
 
                         </div>
                         <div class="input-group">
-                            <input type="checkbox" id="vehicle4" name="vehicle3" value="Boat">
-                            <label for="vehicle3"> Контроль</label><br><br>
+                            <input type="checkbox" id="control" name="control" value="True">
+                            <label for="control"> Контроль</label><br><br>
 
                         </div>
                     </div>
@@ -131,7 +138,7 @@
                     <div class="row row-space">
                     <div class="col-2">
                     <div class="p-t-30">
-                        <button class="btn btn--radius btn--red" type="reset">Закрыть</button>
+                        <button class="btn btn--radius btn--red" type="reset" >Закрыть</button>
                     </div>
                     </div>
                         <div class="col-3">
@@ -141,11 +148,18 @@
                         </div>
 </div>
 
+
+
+
+
                 </form>
+
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- Jquery JS-->
 <script src="../static/vendor/jquery/jquery.min.js" th:src="@{vendor/jquery/jquery.min.js}"></script>
@@ -156,6 +170,8 @@
 
 <!-- Main JS-->
 <script src="../static/js/global.js" th:src="@{js/global.js}"></script>
+
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
