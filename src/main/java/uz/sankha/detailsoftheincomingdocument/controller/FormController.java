@@ -43,6 +43,7 @@ public class FormController {
         n.setDelivery_form("Sanjar000");
         n.setReg_date("Today");
         formRepository.save(n);
-        return "form`";
+        return form(model);
     }
+
 }
