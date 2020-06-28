@@ -3,12 +3,16 @@ package uz.sankha.detailsoftheincomingdocument.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import uz.sankha.detailsoftheincomingdocument.entity.Form;
+import uz.sankha.detailsoftheincomingdocument.model.Form;
+import uz.sankha.detailsoftheincomingdocument.model.FormData;
 import uz.sankha.detailsoftheincomingdocument.repository.FormRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,23 +30,23 @@ public class FormController {
     }
 
     @PostMapping("/requisites")
-    private String requisites(Model model, HttpServletRequest request){
-        System.out.println("Reg id:"+request.getParameter("reg_Id"));
-        System.out.println("Reg date:"+request.getParameter("reg_date"));
-        System.out.println("source id:"+request.getParameter("source_doc_id"));
-        System.out.println("source date:"+request.getParameter("source_doc_date"));
-        System.out.println("delivary form:"+request.getParameter("delivery_form"));
-        System.out.println("Correspondent:"+request.getParameter("correspondent"));
-        System.out.println("Topic:"+request.getParameter("topic"));
-        System.out.println("Descript:"+request.getParameter("description"));
-        System.out.println("Period:"+request.getParameter("period_of_execution"));
-        System.out.println("Acces:"+request.getParameter("access"));
-        System.out.println("Control:"+request.getParameter("control"));
-        Form n=new Form();
-        n.setAccess(true);
-        n.setDelivery_form("Sanjar000");
-        n.setReg_date("Today");
-        formRepository.save(n);
+    private String requisites( Model model, HttpServletRequest request){
+        System.out.println(request.getParameter("correspondent"));
+        FormData fdate=new FormData();
+        fdate.setReg_Id(request.getParameter("reg_Id"));
+
+        fdate.setSource_doc_id(request.getParameter("source_doc_id"));
+
+
+        fdate.setTopic(request.getParameter("topic"));
+        fdate.setDescription(request.getParameter("description"));
+
+        fdate.setAccess(true);
+        fdate.setControl(false);
+        fdate.setDelivery_form(2);
+        fdate.setCorrespondent(1);
+
+        formRepository.save(fdate);
         return form(model);
     }
 

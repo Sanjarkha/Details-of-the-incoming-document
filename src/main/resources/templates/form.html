@@ -42,10 +42,11 @@
                 <button class="fancy-btn open"><i class="fa fa-times" aria-hidden="true"></i></button>
                 <h3 class="title">Реквизиты входящего документа</h3>
 
-                <form   action="/requisites" method="POST">
+                <form   action="/requisites"  method="POST" >
                     <div class="row row-space">
                         <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder="Рег. №" name="reg_Id">
+                            <input class="input--style-2" type="text" placeholder="Рег. №" name="reg_Id" >
+
                         </div>
                         <div class="col-2">
                             <div class="input-group">
@@ -119,12 +120,12 @@
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="checkbox" id="access" name="access" value="True">
+                            <input type="checkbox" id="access" name="access" value="true">
                             <label for="access"> Доступ</label><br><br>
 
                         </div>
                         <div class="input-group">
-                            <input type="checkbox" id="control" name="control" value="True">
+                            <input type="checkbox" id="control" name="control" value="true">
                             <label for="control"> Контроль</label><br><br>
 
                         </div>
@@ -161,7 +162,7 @@
                             <div class="modal-body">
                                 <h3>Внимание!!!</h3>
                                 <p>Уважаемый пользователи если вы действительно <br/> хотите закрыты форму заполнении заявки <br />  нажмите кнопку подтвердите.Если вы хотите продолжать <br/> формы заполнении заявки нажмите кнопку отменить.</p>
-                                <form method="post" name="reset">
+                                <formData method="post" name="reset">
                                 <div class="row row-space">
 
                                     <div class="col-2">
@@ -178,7 +179,7 @@
                                     </div>
 
                                 </div>
-                                </form>
+                                </formData>
                             </div>
 
                         </div>

@@ -850,3 +850,7 @@ input {
     transform: translateY(35px) scale(0.97, 0.97);
   }
 }
+
+form .error {
+  color: #ff0000;
+}

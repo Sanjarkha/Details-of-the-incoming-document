@@ -1,10 +1,10 @@
-package uz.sankha.detailsoftheincomingdocument.entity;
+package uz.sankha.detailsoftheincomingdocument.model;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "form")
-public class Form {
+public class FormData {
 
     @Column(name = "Id")
     @Id
@@ -25,10 +25,10 @@ public class Form {
     private String source_doc_date;
 
     @Column(name = "delivery_form")
-    private String delivery_form;
+    private Integer delivery_form;
 
     @Column(name = "correspondent")
-    private String correspondent;
+    private Integer correspondent;
 
     @Column(name = "topic")
     private String topic;
@@ -45,11 +45,11 @@ public class Form {
     @Column(name = "control")
     private Boolean control;
 
-    public Form(){
+    public FormData(){
 
     }
 
-    public Form( String reg_Id, String reg_date, String source_doc_id, String source_doc_date, String delivery_form, String correspondent, String topic, String description, String period_of_execution, Boolean access, Boolean control) {
+    public FormData(String reg_Id, String reg_date, String source_doc_id, String source_doc_date, Integer delivery_form, Integer correspondent, String topic, String description, String period_of_execution, Boolean access, Boolean control) {
 
         this.reg_Id = reg_Id;
         this.reg_date = reg_date;
@@ -104,19 +104,19 @@ public class Form {
         this.source_doc_date = source_doc_date;
     }
 
-    public String getDelivery_form() {
+    public Integer getDelivery_form() {
         return delivery_form;
     }
 
-    public void setDelivery_form(String delivery_form) {
+    public void setDelivery_form(Integer delivery_form) {
         this.delivery_form = delivery_form;
     }
 
-    public String getCorrespondent() {
+    public Integer getCorrespondent() {
         return correspondent;
     }
 
-    public void setCorrespondent(String correspondent) {
+    public void setCorrespondent(Integer correspondent) {
         this.correspondent = correspondent;
     }
 
